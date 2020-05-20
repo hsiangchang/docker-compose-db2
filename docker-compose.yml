@@ -1,0 +1,15 @@
+version: "3"
+services:
+  tomcat:
+    image: ibmcom/db2
+    container_name: mydb2
+    privileged: true
+    env_file:
+      - ./config/env_list
+    volumes:
+      - ./init/0_schema.sh:/var/custom/0_schema.sh
+      - ./data:/database_store/ibmcorp/database"
+    environment:
+      - TZ=Asia/Taipei
+    ports:
+      - "50000:50000"
